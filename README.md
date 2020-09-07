@@ -1,5 +1,5 @@
 # Stock price tracker
-Tracking stock price of interest in real time without
+Tracking stock price of interest in real time. Unike web applications, refreshing happens often and no input is ever required. Application is for a raspberry pi feeding data into a led matrix display that can be installed anywhere within the house.
 
 ### 3rd party dependencies:
 - [dotenv](https://pypi.org/project/python-dotenv/)
@@ -9,7 +9,7 @@ Go to [Finnhub](https://finnhub.io/) and sign up with an account. Doing so will 
 
 > FINNHUB_TOKEN=yourToken
 
-###TODOs:
+### TODOs:
 - switch over to webhooks to avoid api calls overhead and get real time results
 - include alarm triggers for breakpoints (ie min/max target values)
 - add integration with led matrix display and raspberry pi

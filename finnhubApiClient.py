@@ -14,7 +14,7 @@ class FinnhubApiClient:
 		if res.status_code == 429:
 			requestsLimitError = "Requests reached the maximum 60 calls / minute rate limit that the free Finnhub account allows."
 			print(requestsLimitError) #printing to console since all these exceptions are already caught by out scripts
-			raise Exception(requestsLimitError)	
+			raise Exception(requestsLimitError)	#TODO: check if api have other failure scenarios as well. Might need more finer granularity with thrown exception types
 		return res
 
 	def isUsCompany(self, symbol):
@@ -22,7 +22,6 @@ class FinnhubApiClient:
 			res = self.makeApiCall(symbol, "stock/profile2")
 		except Exception:
 			return True #TODO: So not legible and counter-intuitive. Look for better way to render. Using Trybool might be an option.
-
 		if res.json()['country'] == 'US':
 			return True
 		print(f"'{symbol}' is not a US company. Server response: {res.status_code} {res.json()}")
@@ -33,7 +32,6 @@ class FinnhubApiClient:
 			res = self.makeApiCall(symbol, "quote")
 		except Exception:
 			return "unknown"
-
 		return res.json()['c']
 
 	def getUsCompanyDayMinimaAndMaxima(self, symbol):
@@ -41,7 +39,6 @@ class FinnhubApiClient:
 			res = self.makeApiCall(symbol, "quote")
 		except Exception:
 			return "unknown", "unknown"
-
 		low = res.json()['l']
 		high = res.json()['h']
 		return low, high
