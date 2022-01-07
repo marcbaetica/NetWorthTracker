@@ -1,3 +1,5 @@
+# https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=VFV.TO&apikey=MY_TOKEN
+
 import os
 import requests as req
 from apis.abstractAPIStockClass import AbstractAPIStockClass
