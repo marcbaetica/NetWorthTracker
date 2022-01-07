@@ -1,4 +1,4 @@
-# Stock price tracker
+# Net worth tracker
 Tracking stock price of interest in real time. Unike web applications, refreshing happens often and no input is ever required. Application is for a raspberry pi feeding data into a led matrix display that can be installed anywhere within the house.
 
 ### 3rd party dependencies:

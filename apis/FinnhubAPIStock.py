@@ -1,19 +1,21 @@
+# https://finnhub.io/api/v1/quote?symbol=TSLA&token=MY_TOKEN
+
 import os
 import requests as req
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from apis.AbstractAPIStockClass import AbstractAPIStockClass
 from dotenv import load_dotenv
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from urllib.parse import urlencode
 
 load_dotenv()
 
 
-class AlphavantageAPIClient:
-    def __init__(self, stock):
-        self.base_url = 'https://www.alphavantage.co/query'
+class FinnhubAPIStock(AbstractAPIStockClass):
+    def __init__(self, symbol):
+        self.base_url = 'https://finnhub.io/api/v1/quote'
         self.url_encoded_params = {
-                'function': 'GLOBAL_QUOTE',
-                'symbol': stock,
-                'apikey': os.getenv('ALPHAVANTAGE_KEY')
+                'symbol': symbol,
+                'token': os.getenv('FINNHUB_TOKEN')
         }
 
     @property
@@ -23,7 +25,7 @@ class AlphavantageAPIClient:
         try:
             res = req.get(query_url)
             res.raise_for_status()
-            price = float(res.json()['Global Quote']['05. price'])
+            price = float(res.json()['c'])
         except ConnectionError:
             print(f'Failed to connect to {query_url}.')
         except Timeout:
