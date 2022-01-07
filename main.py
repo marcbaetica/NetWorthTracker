@@ -1,5 +1,6 @@
 from apis.stock_api_factory import stock_api_factory
-from apis.freecurrencyAPIExchange import FreecurrencyAPIExchange
+from lib.calculations import convert_usd_to_cad
+
 
 SYMBOL = "TSLA"
 EXCHANGE_MARKET = "NASDAQ"
@@ -13,4 +14,4 @@ EXCHANGE_MARKET = "TSE"
 stock_price = stock_api_factory(SYMBOL, EXCHANGE_MARKET).stock_price
 print(stock_price)
 
-FreecurrencyAPIExchange().current_exchange_rate_usd_to('CAD')
+print(convert_usd_to_cad(1000))
