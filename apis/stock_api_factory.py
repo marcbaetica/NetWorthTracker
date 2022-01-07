@@ -1,5 +1,5 @@
-from apis.AlphavantageAPIStock import AlphavantageAPIStock
-from apis.FinnhubAPIStock import FinnhubAPIStock
+from apis.alphavantageAPIStock import AlphavantageAPIStock
+from apis.finnhubAPIStock import FinnhubAPIStock
 
 
 def stock_api_factory(stock, exchange_market):

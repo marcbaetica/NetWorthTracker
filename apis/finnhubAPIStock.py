@@ -2,7 +2,7 @@
 
 import os
 import requests as req
-from apis.AbstractAPIStockClass import AbstractAPIStockClass
+from apis.abstractAPIStockClass import AbstractAPIStockClass
 from dotenv import load_dotenv
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from urllib.parse import urlencode

@@ -1,13 +1,14 @@
 import os
 import requests as req
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from apis.abstractAPIStockClass import AbstractAPIStockClass
 from dotenv import load_dotenv
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 from urllib.parse import urlencode
 
 load_dotenv()
 
 
-class AlphavantageAPIStock:
+class AlphavantageAPIStock(AbstractAPIStockClass):
     def __init__(self, stock):
         self.base_url = 'https://www.alphavantage.co/query'
         self.url_encoded_params = {
