@@ -1,0 +1,43 @@
+{
+  "date": "January 8, 2022",
+  "assets": {
+    "stocks": [
+      {
+        "SYMBOL": "TSLA",
+        "SHARES_OWNED": 84,
+        "EXCHANGE_MARKET": "NASDAQ"
+      },
+      {
+        "SYMBOL": "VFV.TO",
+        "SHARES_OWNED": 427,
+        "EXCHANGE_MARKET": "TSE"
+      }
+    ],
+    "investment_account_unused_cash_balance": [
+      {
+        "type": "cad",
+        "amount": 6.07
+      },
+      {
+        "type": "usd",
+        "amount": 471.89
+      }
+    ],
+    "emergency_fund": 15000,
+    "debit_account": 76082.74,
+    "cash": 3600,
+    "physical_assets": [
+      {
+        "type": "car",
+        "estimated_value": 26000
+      }
+    ]
+  },
+  "liabilities": {
+    "debt": [
+      {"type": "credit_card", "remaining_principal": 27.41},
+      {"type": "car_loan", "remaining_principal": 0},
+      {"type": "student_loan", "remaining_principal": 0}
+    ]
+  }
+}

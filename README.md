@@ -1,15 +1,19 @@
 # Net worth tracker
-Tracking stock price of interest in real time. Unike web applications, refreshing happens often and no input is ever required. Application is for a raspberry pi feeding data into a led matrix display that can be installed anywhere within the house.
+Calculates net worth based on investments portofolio, as well as cash & physical assets and liabilities.
+Investments are calculated using real time data from 3 apis (tracking US & Canadian stocks and the real USD to CAD exchange rate).
 
 ### 3rd party dependencies:
 - [dotenv](https://pypi.org/project/python-dotenv/)
 
-### To generate token:
-Go to [Finnhub](https://finnhub.io/) and sign up with an account. Doing so will generate a token for generating api calls. Include this in an .env file within the same foloder using the following structure:
+### APIs access:
+3 APIs are used in the calculation of the most up-to-date value of the stock investment across 2 markets:
+- [Finnhub](https://finnhub.io/)
+- [Free Currency API](https://freecurrencyapi.net/)
+- [Alpha Vantage](https://www.alphavantage.co/)
 
-> FINNHUB_TOKEN=yourToken
+Though the services are free to use, each one requites an api token. The tokens are received by signing up for free on
+each service and updating the local .env file appropriately. 
 
 ### TODOs:
-- switch over to webhooks to avoid api calls overhead and get real time results
-- include alarm triggers for breakpoints (ie min/max target values)
-- add integration with led matrix display and raspberry pi
+- financial_portofolio.json is currently static. Need to automate this data to reflect monthly changes.
+- Add integration with led matrix display and RaspberryPi for on-desk instrument.

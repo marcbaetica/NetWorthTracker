@@ -1,14 +1,27 @@
-from apis.stock_api_factory import stock_api_factory
-from lib.calculations import convert_usd_to_cad
+from lib.portofolio_parser import parse_portofolio_from_file
+from lib.calculations import calculate_stock_investments_value, calculate_portofolio_cash, \
+    calculate_physical_assets_value, calculate_debt_liabilities
 
 
-stocks = [
-    {'SYMBOL': 'TSLA', 'EXCHANGE_MARKET': 'NASDAQ'},
-    {'SYMBOL': 'VFV.TO', 'EXCHANGE_MARKET': 'TSE'}
-]
+FINANCIAL_PORTOFOLIO = 'financial_portofolio.json'
 
-for stock in stocks:
-    stock_price = stock_api_factory(stock['SYMBOL'], stock['EXCHANGE_MARKET']).stock_price
-    print(stock_price)
+assets, liabilities, date = parse_portofolio_from_file(FINANCIAL_PORTOFOLIO)
 
-print(convert_usd_to_cad(1000))
+stock_investments = calculate_stock_investments_value(assets)
+print(f'Stock investments are currently worth CA${stock_investments}.\n')
+
+portofolio_cash = calculate_portofolio_cash(assets)
+print(f'Unused cash in portofolio is currently worth CA${portofolio_cash}.\n')
+
+physical_assets_value = calculate_physical_assets_value(assets)
+print(f'Total physical assets are currently worth CA${physical_assets_value}.\n')
+
+assets_value = stock_investments + portofolio_cash + physical_assets_value
+
+debt_liabilities = calculate_debt_liabilities(liabilities)
+print(f'Total debt liabilities are currently totaling CA${physical_assets_value}.\n')
+
+print("SUMMARY:")
+print(f'Assets: CA${assets_value}')
+print(f'Liabilities: CA${debt_liabilities}')
+print(f'Current net worth as of [{date}]: CA${round(assets_value - debt_liabilities, 2)}')
